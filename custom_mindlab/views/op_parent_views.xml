@@ -1,0 +1,22 @@
+<odoo>
+    <record id="inherit_op_parent_view_form" model="ir.ui.view">
+        <field name="name">op.parent.view.form.inherit</field>
+        <field name="model">op.parent</field>
+        <field name="inherit_id" ref="openeducat_parent.view_op_parent_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//sheet" position="inside">
+                <div class="oe_button_box" name="button_box">
+                    <button type="object" class="oe_stat_button" icon="fa-pencil-square-o"
+                            name="action_view_partner_invoices"
+                            context="{'default_partner_id': id}">
+                        <div class="o_form_field o_stat_info">
+                            <span class="o_stat_text">Invoiced</span>
+                        </div>
+                    </button>
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

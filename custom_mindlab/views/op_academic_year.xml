@@ -1,0 +1,15 @@
+<odoo>
+
+<!--    <record id="inherit_op_academic_year_view_form" model="ir.ui.view">-->
+<!--        <field name="name">op.academic.year.view.form.inherit</field>-->
+<!--        <field name="model">op.academic.year</field>-->
+<!--        <field name="inherit_id" ref="openeducat_core.view_op_academic_year_form"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='start_id']" position="after">-->
+<!--                <field name="op_student_id"/>-->
+
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+</odoo>

@@ -1,0 +1,20 @@
+<odoo>
+
+    <record id="inherit_op_course_view_form" model="ir.ui.view">
+        <field name="name">op.course.view.form.inherit</field>
+        <field name="model">op.course</field>
+        <field name="inherit_id" ref="openeducat_core.view_op_course_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='max_unit_load']" position="after">
+                <field name="number_of_sessions"/>
+
+            </xpath>
+            <xpath expr="//notebook/page[@name='subject']" position="after">
+                <page string="Note" name="internal_notes">
+                    <field name="note" nolabel="1" placeholder="Internal notes..."/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

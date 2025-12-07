@@ -1,0 +1,40 @@
+<odoo>
+
+    <record id="inherit_op_student_view_form" model="ir.ui.view">
+        <field name="name">op.student.view.form.inherit</field>
+        <field name="model">op.student</field>
+        <field name="inherit_id" ref="openeducat_core.view_op_student_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <field name="state" widget="statusbar" statusbar_visible="active,inactive,withdrawn,graduated"/>
+            </xpath>
+
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="whatsapp_number"/>
+                <field name="registration_source"/>
+                <field name="op_course_id"/>
+                <field name="number_of_sessions"/>
+
+            </xpath>
+            <xpath expr="//field[@name='emergency_contact']" position="after">
+                <field name="parent_ids" widget="many2many_tags"/>
+                <field name="relationship_id"/>
+            </xpath>
+
+
+            <xpath expr="//notebook/page[@name='other_information']" position="after">
+                <page string="Previous Levels" name="previous_levels">
+
+                    <field name="academic_year_ids">
+                        <list editable="bottom">
+                            <field name="name"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
