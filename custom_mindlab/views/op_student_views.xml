@@ -9,6 +9,20 @@
                 <field name="state" widget="statusbar" statusbar_visible="active,inactive,withdrawn,graduated"/>
             </xpath>
 
+              <xpath expr="//button[@name='get_parent']" position="after">
+                <div class="oe_button_box" name="button_box">
+                    <button type="object" class="oe_stat_button"
+                            icon="fa-newspaper-o"
+                            name="action_view_student_applications"
+                            >
+                        <div class="o_form_field o_stat_info">
+                            <span class="o_stat_text">Applications</span>
+                        </div>
+                    </button>
+                </div>
+            </xpath>
+
+
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="whatsapp_number"/>
                 <field name="registration_source"/>

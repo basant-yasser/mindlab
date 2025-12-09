@@ -21,6 +21,16 @@ class OpStudent(models.Model):
     ], string='Status',default='')
 
     relationship_id = fields.Many2one(related='parent_ids.relationship_id', string="Relationship")
+
+    def action_view_student_applications(self):
+        action = self.env["ir.actions.actions"]._for_xml_id(
+            "openeducat_admission.act_open_op_admission_view"
+        )
+        action['domain'] = [
+            ('student_id', '=', self.id),
+        ]
+
+        return action
     # op_admin_register_id = fields.Many2one('op.admission.register', string="Admission Register")
 
     # parent_id = fields.Many2one('op.parent', string="Parent")

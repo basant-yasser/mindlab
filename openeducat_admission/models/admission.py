@@ -202,13 +202,50 @@ class OpAdmission(models.Model):
 
     @api.constrains('register_id', 'application_date')
     def _check_admission_register(self):
+        from datetime import datetime, time, date
+
         for rec in self:
-            start_date = fields.Date.from_string(rec.register_id.start_date)
-            end_date = fields.Date.from_string(rec.register_id.end_date)
-            application_date = fields.Date.from_string(rec.application_date)
-            if application_date < start_date or application_date > end_date:
-                raise ValidationError(_(
-                    "Application Date should be between Start Date & End Date of Admission Register."))  # noqa
+            start_date = rec.register_id.start_date
+            end_date = rec.register_id.end_date
+            application_date = rec.application_date
+
+            # 1️⃣ If any date is missing → skip
+            if not start_date or not end_date or not application_date:
+                return
+
+            # 2️⃣ Convert date → datetime (only if needed)
+            if isinstance(start_date, date) and not isinstance(start_date, datetime):
+                start_date = datetime.combine(start_date, time.min)
+
+            if isinstance(end_date, date) and not isinstance(end_date, datetime):
+                end_date = datetime.combine(end_date, time.max)
+
+            if isinstance(application_date, date) and not isinstance(application_date, datetime):
+                application_date = datetime.combine(application_date, time.min)
+
+            # 3️⃣ Safe comparison (all are datetime)
+            if not (start_date <= application_date <= end_date):
+                raise ValidationError(
+                    "Application Date should be between Start Date and End Date of Admission Register."
+                )
+
+    # @api.constrains('register_id', 'application_date')
+    # def _check_admission_register(self):
+    #     for rec in self:
+    #         from datetime import datetime, time, date
+    #         start_date = rec.register_id.start_date
+    #         end_date = rec.register_id.end_date
+    #         if isinstance(start_date, date) and not isinstance(start_date, datetime):
+    #             start_date = datetime.combine(start_date, time.min)
+    #             print("////////start_date", start_date)
+    #         if isinstance(start_date, date) and not isinstance(start_date, datetime):
+    #             end_date = datetime.combine(end_date, time.min)
+    #             print("///////end_date", end_date)
+    #         application_date = fields.Date.from_string(rec.application_date)
+    #         print("///////application_date", application_date)
+    #         if application_date < start_date or application_date > end_date:
+    #             raise ValidationError(_(
+    #                 "Application Date should be between Start Date & End Date of Admission Register."))  # noqa
 
     @api.constrains('birth_date')
     def _check_birthdate(self):

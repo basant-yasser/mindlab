@@ -47,6 +47,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_dnone">
                                             <div class="row s_col_no_resize s_col_no_bgcolor">
                                                 <label class="col-form-label col-sm-auto s_website_form_label"
@@ -72,6 +73,28 @@
                                                        style="width: 200px"
                                                        for="contact1">
                                                     <span class="s_website_form_label_content">
+                                                        Middle Name
+                                                    </span>
+
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="last_name"
+                                                           type="text"
+                                                           class="form-control s_website_form_input"
+                                                           name="middle_name"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                                             data-type="char"
+                                             data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                                       style="width: 200px"
+                                                       for="contact1">
+                                                    <span class="s_website_form_label_content">
                                                         Last Name
                                                     </span>
                                                     <span class="s_website_form_mark">
@@ -87,6 +110,35 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                                             data-type="char"
+                                             data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                                       style="width: 200px"
+                                                       for="title">
+                                                    <span class="s_website_form_label_content">
+                                                        Title
+                                                    </span>
+                                                    <span class="s_website_form_mark">
+                                                        *
+                                                    </span>
+
+                                                </label>
+                                                <div class="col-sm">
+                                                    <select name="titles"
+                                                            class="form-control" required="true">
+                                                        <t t-foreach="title"
+                                                           t-as="rec">
+                                                            <option t-att-value="rec.id">
+                                                                <t t-esc="rec.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
                                              data-type="char"
                                              data-name="Field">
@@ -150,8 +202,8 @@
                                                     </span>
                                                 </label>
                                                 <div class="col-sm">
-                                                    <input id="date"
-                                                           name="date"
+                                                    <input id="birth_date"
+                                                           name="birth_date"
                                                            type="date"
                                                            class="form-control s_website_form_input"
                                                            required="true"/>
@@ -169,83 +221,84 @@
                                                     <span class="s_website_form_label_content">
                                                         Gender
                                                     </span>
+                                                    <span>*</span>
                                                 </label>
                                                 <div class="col-sm">
-                                                    <select name="gender"
-                                                            class="form-control">
-                                                        <option value="male">Male</option>
-                                                        <option value="female">Female</option>
-                                                        <option value="other">Other</option>
+                                                    <select name="gender" id="gender" class="form-control"
+                                                            required="True">
+                                                        <option value="">Select Gender</option>
+                                                        <option value="m">Male</option>
+                                                        <option value="f">Female</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom"
-                                             data-type="char"
-                                             data-name="Field">
-                                            <div class="row s_col_no_resize s_col_no_bgcolor">
-                                                <label class="col-form-label col-sm-auto s_website_form_label"
-                                                       style="width: 200px"
-                                                       for="contact2">
-                                                    <span class="s_website_form_label_content">
-                                                        Blood Group
-                                                    </span>
-                                                </label>
-                                                <div class="col-sm">
-                                                    <select name="blood_group"
-                                                            class="form-control">
-                                                        <option value="a+">A+</option>
-                                                        <option value="a-">A-</option>
-                                                        <option value="b+">B+</option>
-                                                        <option value="o+">O+</option>
-                                                        <option value="o-">O-</option>
-                                                        <option value="ab+">AB+</option>
-                                                        <option value="ab-">AB-</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <!--                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom"-->
+                                        <!--                                             data-type="char"-->
+                                        <!--                                             data-name="Field">-->
+                                        <!--                                            <div class="row s_col_no_resize s_col_no_bgcolor">-->
+                                        <!--                                                <label class="col-form-label col-sm-auto s_website_form_label"-->
+                                        <!--                                                       style="width: 200px"-->
+                                        <!--                                                       for="contact2">-->
+                                        <!--                                                    <span class="s_website_form_label_content">-->
+                                        <!--                                                        Blood Group-->
+                                        <!--                                                    </span>-->
+                                        <!--                                                </label>-->
+                                        <!--                                                <div class="col-sm">-->
+                                        <!--                                                    <select name="blood_group"-->
+                                        <!--                                                            class="form-control">-->
+                                        <!--                                                        <option value="a+">A+</option>-->
+                                        <!--                                                        <option value="a-">A-</option>-->
+                                        <!--                                                        <option value="b+">B+</option>-->
+                                        <!--                                                        <option value="o+">O+</option>-->
+                                        <!--                                                        <option value="o-">O-</option>-->
+                                        <!--                                                        <option value="ab+">AB+</option>-->
+                                        <!--                                                        <option value="ab-">AB-</option>-->
+                                        <!--                                                    </select>-->
+                                        <!--                                                </div>-->
+                                        <!--                                            </div>-->
+                                        <!--                                        </div>-->
 
-                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
-                                             data-type="char"
-                                             data-name="Field">
-                                            <div class="row s_col_no_resize s_col_no_bgcolor">
-                                                <label class="col-form-label col-sm-auto s_website_form_label"
-                                                       style="width: 200px"
-                                                       for="contact1">
-                                                    <span class="s_website_form_label_content">
-                                                        Father's Name
-                                                    </span>
-                                                </label>
-                                                <div class="col-sm">
-                                                    <input id="father"
-                                                           type="text"
-                                                           class="form-control s_website_form_input"
-                                                           name="father"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
-                                             data-type="char"
-                                             data-name="Field">
-                                            <div class="row s_col_no_resize s_col_no_bgcolor">
-                                                <label class="col-form-label col-sm-auto s_website_form_label"
-                                                       style="width: 200px"
-                                                       for="contact1">
-                                                    <span class="s_website_form_label_content">
-                                                        Mother's Name
-                                                    </span>
-                                                </label>
-                                                <div class="col-sm">
-                                                    <input id="mother"
-                                                           type="text"
-                                                           class="form-control s_website_form_input"
-                                                           name="mother"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <!--                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"-->
+                                        <!--                                             data-type="char"-->
+                                        <!--                                             data-name="Field">-->
+                                        <!--                                            <div class="row s_col_no_resize s_col_no_bgcolor">-->
+                                        <!--                                                <label class="col-form-label col-sm-auto s_website_form_label"-->
+                                        <!--                                                       style="width: 200px"-->
+                                        <!--                                                       for="contact1">-->
+                                        <!--                                                    <span class="s_website_form_label_content">-->
+                                        <!--                                                        Father's Name-->
+                                        <!--                                                    </span>-->
+                                        <!--                                                </label>-->
+                                        <!--                                                <div class="col-sm">-->
+                                        <!--                                                    <input id="father"-->
+                                        <!--                                                           type="text"-->
+                                        <!--                                                           class="form-control s_website_form_input"-->
+                                        <!--                                                           name="father"-->
+                                        <!--                                                    />-->
+                                        <!--                                                </div>-->
+                                        <!--                                            </div>-->
+                                        <!--                                        </div>-->
+                                        <!--                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"-->
+                                        <!--                                             data-type="char"-->
+                                        <!--                                             data-name="Field">-->
+                                        <!--                                            <div class="row s_col_no_resize s_col_no_bgcolor">-->
+                                        <!--                                                <label class="col-form-label col-sm-auto s_website_form_label"-->
+                                        <!--                                                       style="width: 200px"-->
+                                        <!--                                                       for="contact1">-->
+                                        <!--                                                    <span class="s_website_form_label_content">-->
+                                        <!--                                                        Mother's Name-->
+                                        <!--                                                    </span>-->
+                                        <!--                                                </label>-->
+                                        <!--                                                <div class="col-sm">-->
+                                        <!--                                                    <input id="mother"-->
+                                        <!--                                                           type="text"-->
+                                        <!--                                                           class="form-control s_website_form_input"-->
+                                        <!--                                                           name="mother"-->
+                                        <!--                                                    />-->
+                                        <!--                                                </div>-->
+                                        <!--                                            </div>-->
+                                        <!--                                        </div>-->
 
                                         <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
                                              data-type="char"
@@ -263,10 +316,10 @@
                                                 </label>
                                                 <div class="col-sm">
                                                     <textarea
-                                                            id="communication_address"
+                                                            id="street"
                                                             type="text"
                                                             class="form-control s_website_form_input"
-                                                            name="communication_address"
+                                                            name="street"
                                                             required="true"/>
                                                 </div>
                                             </div>
@@ -280,183 +333,299 @@
                                                        style="width: 200px"
                                                        for="contact1">
                                                     <span class="s_website_form_label_content">
-                                                        Academic Year
+                                                        Academic Register
                                                     </span>
                                                     <span class="s_website_form_mark">
                                                         *
                                                     </span>
                                                 </label>
                                                 <div class="col-sm">
-                                                    <select name="academic_year"
-                                                            class="form-control"
-                                                            required="true"
-                                                    >
-                                                        <t t-foreach="year"
-                                                           t-as="rec">
-                                                            <option t-att-value="rec.id">
-                                                                <t t-esc="rec.name"/>
-                                                            </option>
-                                                        </t>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
-                                             data-type="char"
-                                             data-name="Field">
-                                            <div class="row s_col_no_resize s_col_no_bgcolor">
-                                                <label class="col-form-label col-sm-auto s_website_form_label"
-                                                       style="width: 200px"
-                                                       for="contact1">
-                                                    <span class="s_website_form_label_content">
-                                                        Class
-                                                    </span>
-                                                    <span class="s_website_form_mark">
-                                                        *
-                                                    </span>
-                                                </label>
-                                                <div class="col-sm">
-                                                    <select name="classes"
+                                                    <select name="admission_register" id="admission_register"
                                                             class="form-control" required="true">
-                                                        <t t-foreach="class"
-                                                           t-as="rec">
+                                                        <!-- Default placeholder option -->
+                                                        <option value="">Select Admission Register</option>
+
+                                                        <!-- Loop through your 'year' records -->
+                                                        <t t-foreach="year" t-as="rec">
                                                             <option t-att-value="rec.id">
                                                                 <t t-esc="rec.name"/>
                                                             </option>
                                                         </t>
                                                     </select>
+
+                                                    <!--                                                    <select name="academic_year"-->
+                                                    <!--                                                            class="form-control"-->
+                                                    <!--                                                            required="true"-->
+                                                    <!--                                                    >-->
+                                                    <!--                                                        <t t-foreach="year"-->
+                                                    <!--                                                           t-as="rec">-->
+                                                    <!--                                                            <option t-att-value="rec.id"-->
+                                                    <!--                                                                    t-att-data-course="rec.course_id">-->
+                                                    <!--                                                                <t t-esc="rec.name"/>-->
+                                                    <!--                                                            </option>-->
+                                                    <!--                                                        </t>-->
+                                                    <!--                                                    </select>-->
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom"
                                              data-type="char"
                                              data-name="Field">
                                             <div class="row s_col_no_resize s_col_no_bgcolor">
                                                 <label class="col-form-label col-sm-auto s_website_form_label"
                                                        style="width: 200px"
-                                                       for="contact1">
+                                                       for="application_date">
                                                     <span class="s_website_form_label_content">
-                                                        Medium
+                                                        Application Date
                                                     </span>
-                                                    <span class="s_website_form_mark">
-                                                        *
-                                                    </span>
-                                                </label>
-                                                <div class="col-sm">
-                                                    <select name="medium"
-                                                            class="form-control" required="true">
-                                                        <t t-foreach="medium"
-                                                           t-as="rec">
-                                                            <option t-att-value="rec.id">
-                                                                <t t-esc="rec.name"/>
-                                                            </option>
-                                                        </t>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                    <span>*</span>
 
-                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
-                                             data-type="char"
-                                             data-name="Field">
-                                            <div class="row s_col_no_resize s_col_no_bgcolor">
-                                                <label class="col-form-label col-sm-auto s_website_form_label"
-                                                       style="width: 200px"
-                                                       for="contact1">
-                                                    <span class="s_website_form_label_content">
-                                                        Second Language
-                                                    </span>
-                                                    <span class="s_website_form_mark">
-                                                        *
-                                                    </span>
                                                 </label>
                                                 <div class="col-sm">
-                                                    <select name="sec_lang"
-                                                            class="form-control" required="required">
-                                                        <t t-foreach="sec_lang"
-                                                           t-as="rec">
-                                                            <option t-att-value="rec.id">
-                                                                <t t-esc="rec.name"/>
-                                                            </option>
-                                                        </t>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
-                                             data-type="char"
-                                             data-name="Field">
-                                            <div class="row s_col_no_resize s_col_no_bgcolor">
-                                                <label class="col-form-label col-sm-auto s_website_form_label"
-                                                       style="width: 200px"
-                                                       for="contact1">
-                                                    <span class="s_website_form_label_content">
-                                                        Mother Tongue
-                                                    </span>
-                                                    <span class="s_website_form_mark">
-                                                        *
-                                                    </span>
-                                                </label>
-                                                <div class="col-sm">
-                                                    <input id="mother_tongue"
-                                                           type="text"
+                                                    <input id="application_date" required="True"
+                                                           name="application_date"
+                                                           type="datetime-local"
                                                            class="form-control s_website_form_input"
-                                                           name="tongue"
-                                                           required="true"/>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
-                                             data-type="char"
-                                             data-name="Field">
-                                            <div class="row s_col_no_resize s_col_no_bgcolor">
-                                                <label class="col-form-label col-sm-auto s_website_form_label"
-                                                       style="width: 200px"
-                                                       for="contact1">
-                                                    <span class="s_website_form_label_content">
-                                                        Document Type
-                                                    </span>
-                                                    <span class="s_website_form_mark">
-                                                        *
-                                                    </span>
-                                                </label>
-                                                <div class="col-sm">
-                                                    <select name="doc_type"
-                                                            class="form-control" required="required">
-                                                        <t t-foreach="doc_type"
-                                                           t-as="rec">
-                                                            <option t-att-value="rec.id">
-                                                                <t t-esc="rec.name"/>
-                                                            </option>
-                                                        </t>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required"
-                                             data-type="binary"
-                                             data-name="Field">
-                                            <div class="row s_col_no_resize s_col_no_bgcolor">
-                                                <label class="col-form-label col-sm-auto s_website_form_label"
-                                                       style="width: 200px"
-                                                       for="contact6">
-                                                    <span class="s_website_form_label_content">
-                                                        Attachment
-                                                    </span>
-                                                </label>
-                                                <div class="col-sm">
-                                                    <input type="file"
-                                                           name="document_attachment"
+                                                           t-att-value="datetime.date.today()"
                                                     />
                                                 </div>
                                             </div>
-                                            <br/>
                                         </div>
 
+                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                                             data-type="char"
+                                             data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                                       style="width: 200px"
+                                                       for="contact1">
+                                                    <span class="s_website_form_label_content">
+                                                        Course
+                                                    </span>
+                                                    <span class="s_website_form_mark">
+                                                        *
+                                                    </span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <select name="courses" id="courses" class="form-control"
+                                                            required="True">
+                                                        <option value="">Select Course</option>
+                                                    </select>
+                                                    <!--                                                    <select name="courses"-->
+                                                    <!--                                                            class="form-control" required="true">-->
+                                                    <!--                                                        <t t-foreach="course"-->
+                                                    <!--                                                           t-as="rec">-->
+                                                    <!--                                                            <option t-att-value="rec.id"  t-att-data-course-id="rec.course_id.id">-->
+                                                    <!--                                                                <t t-esc="rec.name"/>-->
+                                                    <!--                                                            </option>-->
+                                                    <!--                                                        </t>-->
+                                                    <!--                                                    </select>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                                             data-type="char"
+                                             data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                                       style="width: 200px"
+                                                       for="contact1">
+                                                    <span class="s_website_form_label_content">
+                                                        Discount
+                                                    </span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="discount"
+                                                           type="number"
+                                                           class="form-control s_website_form_input"
+                                                           name="discount"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom"
+                                             data-type="char"
+                                             data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                                       style="width: 200px"
+                                                       for="due_date">
+                                                    <span class="s_website_form_label_content">
+                                                        Due Date
+                                                    </span>
+
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="due_date"
+                                                           name="due_date"
+                                                           type="date"
+                                                           class="form-control s_website_form_input"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom"
+                                             data-type="checkbox">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                                       style="width: 200px"
+                                                       for="is_student">
+                                                    <span class="s_website_form_label_content">
+                                                        Is Already Student
+                                                    </span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="is_student"
+                                                           name="is_student"
+                                                           type="checkbox"
+                                                           value="1"/>  <!-- important -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom"
+                                             data-type="char"
+                                             data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                                       style="width: 200px"
+                                                       for="fees_start_date">
+                                                    <span class="s_website_form_label_content">
+                                                        Fees Start Date
+                                                    </span>
+
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="fees_start_date"
+                                                           name="fees_start_date"
+                                                           type="date"
+                                                           class="form-control s_website_form_input"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom"
+                                             data-type="char"
+                                             data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                                       style="width: 200px"
+                                                       for="admission_date">
+                                                    <span class="s_website_form_label_content">
+                                                        Admission Date
+                                                    </span>
+
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="admission_date"
+                                                           name="admission_date"
+                                                           type="date"
+                                                           class="form-control s_website_form_input"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                                             data-type="char"
+                                             data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                                       style="width: 200px"
+                                                       for="batch">
+                                                    <span class="s_website_form_label_content">
+                                                        Batch
+                                                    </span>
+                                                    <span class="s_website_form_mark">
+                                                        *
+                                                    </span>
+
+                                                </label>
+                                                <div class="col-sm">
+                                                    <select name="batches"
+                                                            class="form-control" required="true">
+                                                        <option value="">Select Batch</option>
+                                                        <t t-foreach="batch"
+                                                           t-as="rec">
+                                                            <option t-att-value="rec.id">
+                                                                <t t-esc="rec.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                                             data-type="char"
+                                             data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                                       style="width: 200px"
+                                                       for="fees">
+                                                    <span class="s_website_form_label_content">
+                                                        Fees
+                                                    </span>
+                                                </label>
+                                                <div class="col-sm">
+                                                    <input id="fees"
+                                                           type="number"
+                                                           class="form-control s_website_form_input"
+                                                           name="fees"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                                             data-type="char"
+                                             data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                                       style="width: 200px"
+                                                       for="fees_term">
+                                                    <span class="s_website_form_label_content">
+                                                        Fess Term
+                                                    </span>
+                                                    <span class="s_website_form_mark">
+                                                        *
+                                                    </span>
+
+                                                </label>
+                                                <div class="col-sm">
+                                                    <select name="fees_terms"
+                                                            class="form-control" required="true">
+                                                        <t t-foreach="fees_term"
+                                                           t-as="rec">
+                                                            <option t-att-value="rec.id">
+                                                                <t t-esc="rec.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                                             data-type="char"
+                                             data-name="Field">
+                                            <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                <label class="col-form-label col-sm-auto s_website_form_label"
+                                                       style="width: 200px"
+                                                       for="partner">
+                                                    <span class="s_website_form_label_content">
+                                                        Partner
+                                                    </span>
+
+
+                                                </label>
+                                                <div class="col-sm">
+                                                    <select name="partners"
+                                                            class="form-control">
+                                                        <t t-foreach="partner"
+                                                           t-as="rec">
+                                                            <option t-att-value="rec.id">
+                                                                <t t-esc="rec.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"
                                              data-type="binary"
                                              data-name="Field">
@@ -477,12 +646,103 @@
                                                 </div>
                                             </div>
                                         </div>
+
+
+                                        <!--                                        <div class="mb-0 py-2 col-12 s_website_form_field s_website_form_custom s_website_form_required"-->
+                                        <!--                                             data-type="char"-->
+                                        <!--                                             data-name="Field">-->
+                                        <!--                                            <div class="row s_col_no_resize s_col_no_bgcolor">-->
+                                        <!--                                                <label class="col-form-label col-sm-auto s_website_form_label"-->
+                                        <!--                                                       style="width: 200px"-->
+                                        <!--                                                       for="contact1">-->
+                                        <!--                                                    <span class="s_website_form_label_content">-->
+                                        <!--                                                        Document Type-->
+                                        <!--                                                    </span>-->
+                                        <!--                                                    <span class="s_website_form_mark">-->
+                                        <!--                                                        *-->
+                                        <!--                                                    </span>-->
+                                        <!--                                                </label>-->
+                                        <!--                                                <div class="col-sm">-->
+                                        <!--                                                    <select name="doc_type"-->
+                                        <!--                                                            class="form-control" required="required">-->
+                                        <!--                                                        <t t-foreach="doc_type"-->
+                                        <!--                                                           t-as="rec">-->
+                                        <!--                                                            <option t-att-value="rec.id">-->
+                                        <!--                                                                <t t-esc="rec.name"/>-->
+                                        <!--                                                            </option>-->
+                                        <!--                                                        </t>-->
+                                        <!--                                                    </select>-->
+                                        <!--                                                </div>-->
+                                        <!--                                            </div>-->
+                                        <!--                                        </div>-->
+                                        <!--                                        <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required"-->
+                                        <!--                                             data-type="binary"-->
+                                        <!--                                             data-name="Field">-->
+                                        <!--                                            <div class="row s_col_no_resize s_col_no_bgcolor">-->
+                                        <!--                                                <label class="col-form-label col-sm-auto s_website_form_label"-->
+                                        <!--                                                       style="width: 200px"-->
+                                        <!--                                                       for="contact6">-->
+                                        <!--                                                    <span class="s_website_form_label_content">-->
+                                        <!--                                                        Attachment-->
+                                        <!--                                                    </span>-->
+                                        <!--                                                </label>-->
+                                        <!--                                                <div class="col-sm">-->
+                                        <!--                                                    <input type="file"-->
+                                        <!--                                                           name="document_attachment"-->
+                                        <!--                                                    />-->
+                                        <!--                                                </div>-->
+                                        <!--                                            </div>-->
+                                        <!--                                            <br/>-->
+                                        <!--                                        </div>-->
+
                                         <div class="mb-0 py-2 col-12 s_website_form_submit" data-name="Submit Button">
                                             <button type="submit" class="btn btn-primary">Submit</button>
-                                                </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
+                            <!-- JavaScript for popup -->
+                            <!--                            <t t-if="res">-->
+                            <!--                                <script type="text/javascript">-->
+                            <!--                                    alert("<t t-esc="res"/>");-->
+                            <!--                                </script>-->
+                            <!--                            </t>-->
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                const admissionSelect = document.getElementById('admission_register');
+                                console.log('admissionSelect',admissionSelect)
+                                const courseSelect = document.getElementById('courses');
+
+                                admissionSelect.addEventListener('change', function() {
+                                const admissionId = this.value;
+
+                                <!--        // Clear current courses-->
+                                courseSelect.innerHTML = '&lt;option value="">Select Course';
+
+                                if (admissionId) {
+                                fetch('/get_courses_by_admission/' + admissionId, {
+                                method: 'GET',
+                                headers: {
+                                'Content-Type': 'application/json'
+                                },
+                                credentials: 'same-origin' // required if user authentication is needed
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                data.forEach(course => {
+                                const option = document.createElement('option');
+                                option.value = course.id;
+                                option.textContent = course.name;
+                                courseSelect.appendChild(option);
+                                });
+                                })
+                                .catch(error => console.error('Error fetching courses:', error));
+                                }
+                                });
+                                });
+                            </script>
+
+
                         </div>
                     </div>
                 </div>
