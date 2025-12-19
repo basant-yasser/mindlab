@@ -1,2 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_custom_mindlab_custom_mindlab,custom_mindlab.custom_mindlab,model_custom_mindlab_custom_mindlab,base.group_user,1,1,1,1
+access_program_details,program_details,custom_mindlab.model_program_details,base.group_user,1,1,1,1
+access_kit_type,kit_type,custom_mindlab.model_kit_type,base.group_user,1,1,1,1
+access_kit_level,kit_level,custom_mindlab.model_kit_level,base.group_user,1,1,1,1
+access_project_program,project_program,custom_mindlab.model_project_program,base.group_user,1,1,1,1
+access_student_attendance_sheet,student_attendance_sheet,custom_mindlab.model_student_attendance_sheet,base.group_user,1,1,1,

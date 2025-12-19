@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="project_program_list" model="ir.ui.view">
+            <field name="name">project.program.list</field>
+            <field name="model">project.program</field>
+            <field name="arch" type="xml">
+                <list  editable="bottom" multi_edit="1">
+
+                    <field name="name"/>
+
+                </list>
+            </field>
+        </record>
+
+
+
+        <record id="project_program_act_window" model="ir.actions.act_window">
+            <field name="name">Project Program</field>
+            <field name="res_model">project.program</field>
+        </record>
+
+        <menuitem action="project_program_act_window" id="menu_project_program_act_window" parent="openeducat_timetable.menu_op_timetable_configuration"/>
+    </data>
+</odoo>

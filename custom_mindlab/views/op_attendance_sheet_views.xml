@@ -1,0 +1,17 @@
+<odoo>
+
+    <record id="inherit_op_attendance_sheet_view_form" model="ir.ui.view">
+        <field name="name">op.attendance.sheet.form.inherit</field>
+        <field name="model">op.attendance.sheet</field>
+        <field name="inherit_id" ref="openeducat_attendance.view_op_attendance_sheet_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='attendance_line']/list" position="inside">
+                <field name="program_details_id"/>
+                <field name="kit_level_id"/>
+                <field name="project_program_ids" widget="many2many_tags"/>
+
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

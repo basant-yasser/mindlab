@@ -47,6 +47,18 @@
                         </list>
                     </field>
                 </page>
+                 <page string="Student Attendance Sheet" name="student_attendance_sheet">
+                    <field name="student_attendance_sheet_ids">
+                        <list editable="bottom">
+                            <field name="course_name"/>
+                            <field name="number_of_sessions"/>
+                            <field name="remaining_of_sessions"/>
+                            <field name="start_date"/>
+                            <field name="start_datetime"/>
+                            <field name="end_datetime"/>
+                        </list>
+                    </field>
+                </page>
             </xpath>
         </field>
     </record>

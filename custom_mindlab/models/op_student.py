@@ -11,6 +11,7 @@ class OpStudent(models.Model):
         'Registration Source', default='telephone')
 
     academic_year_ids = fields.One2many('op.academic.year','op_student_id',string='Academic Year')
+    student_attendance_sheet_ids = fields.One2many('student.attendance.sheet','op_student_id')
     op_course_id = fields.Many2one('op.course',string='Course')
     number_of_sessions = fields.Integer(related='op_course_id.number_of_sessions',string='Number of Sessions')
     state = fields.Selection([

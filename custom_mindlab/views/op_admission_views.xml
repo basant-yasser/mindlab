@@ -1,0 +1,31 @@
+<odoo>
+
+    <record id="inherit_op_admission_view_form" model="ir.ui.view">
+        <field name="name">op.admission.view.form.inherit</field>
+        <field name="model">op.admission</field>
+        <field name="inherit_id" ref="openeducat_admission.view_op_admission_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='state']" position="replace">
+                <field name="state" widget="statusbar"
+                       statusbar_visible="draft,confirm,waiting_invoice,done"/>
+            </xpath>
+            <xpath expr="//button[@name='admission_confirm']" position="after">
+                <button name="create_invoice" invisible="state != 'waiting_invoice'" class="oe_highlight"
+                        string="Create Invoice"
+                        type="object"/>
+
+                <button name="ready_to_invoice" invisible="state != 'confirm'" class="oe_highlight"
+                        string="Ready to Invoice"
+                        type="object"/>
+
+                <button name="enroll_student" invisible="state not in ('waiting_invoice','admission')"
+                        string="Enroll" type="object"
+                        class="oe_highlight"/>
+
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

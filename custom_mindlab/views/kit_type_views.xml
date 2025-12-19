@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="kit_type_list" model="ir.ui.view">
+            <field name="name">kit.type.list</field>
+            <field name="model">kit.type</field>
+            <field name="arch" type="xml">
+                <list  editable="bottom" multi_edit="1">
+
+                    <field name="name"/>
+
+                </list>
+            </field>
+        </record>
+
+
+
+        <record id="kit_type_act_window" model="ir.actions.act_window">
+            <field name="name">Kit Type</field>
+            <field name="res_model">kit.type</field>
+        </record>
+
+        <menuitem action="kit_type_act_window" id="menu_kit_type_act_window" parent="openeducat_timetable.menu_op_timetable_configuration"/>
+    </data>
+</odoo>

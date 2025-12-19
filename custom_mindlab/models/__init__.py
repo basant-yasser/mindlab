@@ -4,3 +4,12 @@ from . import op_course
 from . import op_academic_year
 from . import op_admission_register
 from . import op_parent
+from . import op_admission
+from . import account_move
+from . import kit_type
+from . import kit_level
+from . import project_program
+from . import op_attendance_line
+from . import program_details
+from . import student_attendance_sheet
+from . import op_attendance_sheet
