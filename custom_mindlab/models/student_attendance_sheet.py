@@ -9,6 +9,7 @@ class StudentAttendanceSheet(models.Model):
     number_of_sessions = fields.Integer(string=' Number of Sessions')
     remaining_of_sessions = fields.Integer(string=' Number of Sessions')
     start_date = fields.Date('Start Date')
+    student_attendance = fields.Datetime('Student Attendance')
     start_datetime = fields.Datetime('Start Time')
-    end_datetime = fields.Datetime('Start Time')
+    end_datetime = fields.Datetime('End Time')
 

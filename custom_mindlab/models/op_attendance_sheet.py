@@ -29,6 +29,7 @@ class OpAttendanceSheet(models.Model):
                     'course_name': course.id,
                     'number_of_sessions': total_sessions,
                     'remaining_of_sessions': remaining_sessions,
+                    'student_attendance': fields.Datetime.now(),
                     'start_date': fields.Date.today(),
                     'start_datetime': sheet.session_id.start_datetime,
                     'end_datetime': sheet.session_id.end_datetime,

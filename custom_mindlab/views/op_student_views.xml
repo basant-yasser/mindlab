@@ -53,6 +53,7 @@
                             <field name="course_name"/>
                             <field name="number_of_sessions"/>
                             <field name="remaining_of_sessions"/>
+                            <field name="student_attendance"/>
                             <field name="start_date"/>
                             <field name="start_datetime"/>
                             <field name="end_datetime"/>

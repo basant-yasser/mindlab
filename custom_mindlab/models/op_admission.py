@@ -18,7 +18,21 @@ class OpAdmission(models.Model):
         self.state = 'waiting_invoice'
 
     def create_invoice(self):
-        # self.state = 'done'
+        if not self.partner_id:
+            partner = self.env['res.partner'].create({
+                'name': self.first_name if self.first_name else False,
+                'email': self.email if self.email else False,
+                'street': self.street if self.street else False,
+                'street2': self.street2 if self.street2 else False,
+                'title': self.title.id if self.title.id else False,
+                'city': self.city if self.city else False,
+                'state_id': self.state_id.id if self.state_id.id else False,
+                'country_id': self.country_id.id if self.country_id.id else False,
+                'is_student': True,
+
+            })
+            self.partner_id = partner.id
+
         invoice = self.env['account.move'].create({
             'op_admission_id': self.id,
             'move_type': 'out_invoice',
@@ -46,11 +60,14 @@ class OpAdmission(models.Model):
             ('op_admission_id', '=', self.id),
             ('move_type', '=', 'out_invoice'),
         ])
+        print("invoices", invoices)
 
         if not invoices:
             raise UserError(_('No invoice found for this admission register.'))
 
-        if any(inv.state != 'posted' for inv in invoices):
-            raise UserError(_('Please post the invoice before enrollment.'))
+        unposted_invoices = invoices.filtered(lambda inv: inv.state != 'posted')
+        if unposted_invoices:
+            names = ', '.join(str(name) for name in unposted_invoices.mapped('partner_id.name') if name)
+            raise UserError(_('Please post the following invoice(s) before enrollment for partner: %s') % names)
 
         return res
