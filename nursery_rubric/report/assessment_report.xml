@@ -1,0 +1,45 @@
+<odoo>
+  <template id="assessment_report_document">
+    <t t-call="web.external_layout">
+      <t t-set="o" t-value="doc"/>
+      <div class="page">
+        <h2>Student Assessment</h2>
+        <p>
+          <strong>Student:</strong> <span t-esc="o.student_id.name"/> <br/>
+          <strong>Date:</strong> <span t-esc="o.date"/> <br/>
+          <strong>Teacher:</strong> <span t-esc="o.teacher_id.name"/> <br/>
+          <strong>Rubric:</strong> <span t-esc="o.rubric_id.name"/> <br/>
+          <strong>Total:</strong> <span t-esc="('%.2f' % o.total_score)"/> / 100
+        </p>
+
+        <table class="table table-sm o_main_table">
+          <thead>
+            <tr>
+              <th>Criterion</th>
+              <th>Weight</th>
+              <th>Score (1-4)</th>
+              <th>Weighted</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <t t-foreach="o.line_ids" t-as="l">
+              <tr>
+                <td><span t-esc="l.criterion_name"/></td>
+                <td><span t-esc="l.weight"/>%</td>
+                <td><span t-esc="l.score or ''"/></td>
+                <td><span t-esc="('%.2f' % l.weighted_score)"/></td>
+                <td><span t-esc="l.notes or ''"/></td>
+              </tr>
+            </t>
+          </tbody>
+        </table>
+
+        <p>
+          <strong>Performance level:</strong>
+          <span t-esc="dict(o._fields['performance_level'].selection).get(o.performance_level)"/>
+        </p>
+      </div>
+    </t>
+  </template>
+</odoo>

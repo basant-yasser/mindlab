@@ -1,0 +1,9 @@
+<odoo>
+  <record id="seq_nursery_assessment" model="ir.sequence">
+    <field name="name">Nursery Assessment</field>
+    <field name="code">nursery.assessment</field>
+    <field name="prefix">ASM/</field>
+    <field name="padding">5</field>
+    <field name="company_id" eval="False"/>
+  </record>
+</odoo>

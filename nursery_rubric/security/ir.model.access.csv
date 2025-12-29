@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_nursery_rubric_user,nursery.rubric user,model_nursery_rubric,base.group_user,1,1,1,0
+access_nursery_rubric_line_user,nursery.rubric.line user,model_nursery_rubric_line,base.group_user,1,1,1,0
+access_nursery_assessment_user,nursery.assessment user,model_nursery_assessment,base.group_user,1,1,1,0
+access_nursery_assessment_line_user,nursery.assessment.line user,model_nursery_assessment_line,base.group_user,1,1,1,0

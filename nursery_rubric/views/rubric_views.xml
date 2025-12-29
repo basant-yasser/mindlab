@@ -1,0 +1,55 @@
+<odoo>
+  <record id="view_nursery_rubric_tree" model="ir.ui.view">
+    <field name="name">nursery.rubric.tree</field>
+    <field name="model">nursery.rubric</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="name"/>
+        <field name="weight_total"/>
+        <field name="active"/>
+      </list>
+    </field>
+  </record>
+
+  <record id="view_nursery_rubric_form" model="ir.ui.view">
+    <field name="name">nursery.rubric.form</field>
+    <field name="model">nursery.rubric</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="active"/>
+            <field name="weight_total" readonly="1"/>
+            <field name="note"/>
+          </group>
+
+          <notebook>
+            <page string="Criteria">
+              <field name="line_ids">
+                <list editable="bottom">
+                  <field name="sequence" widget="handle"/>
+                  <field name="name"/>
+                  <field name="weight"/>
+                </list>
+                <form>
+                  <group>
+                    <field name="sequence"/>
+                    <field name="name"/>
+                    <field name="weight"/>
+                  </group>
+                  <group string="Levels">
+                    <field name="level_1"/>
+                    <field name="level_2"/>
+                    <field name="level_3"/>
+                    <field name="level_4"/>
+                  </group>
+                </form>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+</odoo>
