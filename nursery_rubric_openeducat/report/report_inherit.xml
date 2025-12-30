@@ -1,0 +1,52 @@
+<odoo>
+  <template id="assessment_report_document_inherit_rubric_style" inherit_id="nursery_rubric.assessment_report_document">
+    <xpath expr="//table[contains(@class,'o_main_table')]" position="replace">
+      <table class="table table-sm o_main_table">
+        <thead>
+          <tr>
+            <th style="width: 18%;">Criterion</th>
+            <th style="width: 6%;">Wt</th>
+            <th class="text-center" style="width: 14%;">1 - Not Yet</th>
+            <th class="text-center" style="width: 14%;">2 - Emerging</th>
+            <th class="text-center" style="width: 14%;">3 - Developing</th>
+            <th class="text-center" style="width: 14%;">4 - Achieved</th>
+            <th style="width: 20%;">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <t t-foreach="o.line_ids" t-as="l">
+            <tr>
+              <td><span t-esc="l.criterion_name"/></td>
+              <td><span t-esc="('%s%%' % l.weight)"/></td>
+
+              <td class="text-center">
+                <div><t t-if="l.score == '1'">✅</t></div>
+                <small t-esc="l.level_1 or ''"/>
+              </td>
+              <td class="text-center">
+                <div><t t-if="l.score == '2'">✅</t></div>
+                <small t-esc="l.level_2 or ''"/>
+              </td>
+              <td class="text-center">
+                <div><t t-if="l.score == '3'">✅</t></div>
+                <small t-esc="l.level_3 or ''"/>
+              </td>
+              <td class="text-center">
+                <div><t t-if="l.score == '4'">✅</t></div>
+                <small t-esc="l.level_4 or ''"/>
+              </td>
+
+              <td><span t-esc="l.notes or ''"/></td>
+            </tr>
+          </t>
+        </tbody>
+      </table>
+    </xpath>
+
+    <xpath expr="//p[strong[contains(text(),'Rubric:')]]" position="after">
+      <t t-if="getattr(o, 'course_id', False)">
+        <p><strong>Course:</strong> <span t-esc="o.course_id.display_name"/></p>
+      </t>
+    </xpath>
+  </template>
+</odoo>

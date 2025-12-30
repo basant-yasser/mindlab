@@ -1,0 +1,36 @@
+<odoo>
+  <record id="view_nursery_assessment_form_inherit_openeducat" model="ir.ui.view">
+    <field name="name">nursery.assessment.form.inherit.openeducat</field>
+    <field name="model">nursery.assessment</field>
+    <field name="inherit_id" ref="nursery_rubric.view_nursery_assessment_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='student_id']" position="before">
+        <field name="op_student_id" options="{'no_create': True}"/>
+        <field name="course_id" options="{'no_create': True}"/>
+      </xpath>
+
+      <xpath expr="//field[@name='student_id']" position="attributes">
+        <attribute name="invisible">1</attribute>
+        <attribute name="required">0</attribute>
+      </xpath>
+
+      <xpath expr="//field[@name='rubric_id']" position="attributes">
+        <attribute name="readonly">1</attribute>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="view_nursery_assessment_tree_inherit_openeducat" model="ir.ui.view">
+    <field name="name">nursery.assessment.tree.inherit.openeducat</field>
+    <field name="model">nursery.assessment</field>
+    <field name="inherit_id" ref="nursery_rubric.view_nursery_assessment_tree"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='student_id']" position="replace">
+        <field name="op_student_id"/>
+      </xpath>
+      <xpath expr="//field[@name='rubric_id']" position="before">
+        <field name="course_id"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>
