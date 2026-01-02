@@ -5,9 +5,9 @@
         <field name="model">op.student</field>
         <field name="inherit_id" ref="openeducat_core.view_op_student_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//header" position="inside">
-                <field name="state" widget="statusbar" statusbar_visible="active,inactive,withdrawn,graduated"/>
-            </xpath>
+<!--            <xpath expr="//header" position="inside">-->
+<!--                <field name="state" widget="statusbar" statusbar_visible="active,inactive,withdrawn,graduated"/>-->
+<!--            </xpath>-->
 
               <xpath expr="//button[@name='get_parent']" position="after">
                 <div class="oe_button_box" name="button_box">
@@ -20,14 +20,24 @@
                         </div>
                     </button>
                 </div>
+                    <div class="oe_button_box" name="button_box">
+                    <button type="object" class="oe_stat_button"
+                            icon="fa-newspaper-o"
+                            name="action_view_assessments"
+                            >
+                        <div class="o_form_field o_stat_info">
+                            <span class="o_stat_text">Assessments</span>
+                        </div>
+                    </button>
+                </div>
             </xpath>
 
 
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="whatsapp_number"/>
                 <field name="registration_source"/>
-                <field name="op_course_id"/>
-                <field name="number_of_sessions"/>
+<!--                <field name="op_course_id"/>-->
+<!--                <field name="number_of_sessions"/>-->
 
             </xpath>
             <xpath expr="//field[@name='emergency_contact']" position="after">

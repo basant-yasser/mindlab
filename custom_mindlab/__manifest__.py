@@ -13,7 +13,7 @@ Mindlab
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','openeducat_core','openeducat_parent','openeducat_admission','account','openeducat_attendance'],
+    'depends': ['base','openeducat_core','openeducat_parent','openeducat_admission','account','openeducat_attendance','nursery_rubric'],
 
     # always loaded
     'data': [
@@ -31,6 +31,7 @@ Mindlab
         'views/kit_level_views.xml',
         'views/project_program_views.xml',
         'views/op_attendance_sheet_views.xml',
+        'reports/assessment_report.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

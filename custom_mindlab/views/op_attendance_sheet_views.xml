@@ -7,8 +7,10 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='attendance_line']/list" position="inside">
                 <field name="program_details_id"/>
-                <field name="kit_level_id"/>
-                <field name="project_program_ids" widget="many2many_tags"/>
+                <field name="kit_level_domain" column_invisible="1"/>
+                <field name="kit_level_id" options="{'no_create': True}" domain="kit_level_domain"/>
+                <field name="program_details_domain" widget="many2many_tags" column_invisible="1"/>
+                <field name="project_program_ids" widget="many2many_tags" options="{'no_create': True}" domain="program_details_domain"/>
 
             </xpath>
         </field>

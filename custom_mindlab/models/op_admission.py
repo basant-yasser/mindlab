@@ -14,6 +14,16 @@ class OpAdmission(models.Model):
 
     fees_start_date = fields.Date('Fees Start Date',required=True)
 
+    def action_view_invoices(self):
+        action = self.env["ir.actions.actions"]._for_xml_id(
+            "account.action_move_out_invoice"
+        )
+        action['domain'] = [
+            ('partner_id', '=', self.partner_id.id),
+        ]
+
+        return action
+
     def ready_to_invoice(self):
         self.state = 'waiting_invoice'
 
@@ -32,6 +42,14 @@ class OpAdmission(models.Model):
 
             })
             self.partner_id = partner.id
+            # CREATE STUDENT (IMPORTANT)
+            if not self.student_id:
+                student = self.env['op.student'].create({
+                    'partner_id': self.partner_id.id,
+                    'first_name': self.first_name,
+                    'last_name': self.last_name,
+                })
+                self.student_id = student.id
 
         invoice = self.env['account.move'].create({
             'op_admission_id': self.id,

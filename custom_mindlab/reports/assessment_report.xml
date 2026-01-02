@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_rubric_assessment" model="ir.actions.report">
+        <field name="name">Rubric Assessment</field>
+        <field name="model">nursery.assessment</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">custom_mindlab.report_rubric_assessment_document</field>
+        <field name="report_file">custom_mindlab.report_rubric_assessment_document</field>
+        <field name="binding_model_id" ref="nursery_rubric.model_nursery_assessment"/>
+        <field name="binding_type">report</field>
+    </record>
+       <template id="report_rubric_assessment_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <style>
+                            .header-box {
+                                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                color: white;
+                                padding: 20px;
+                                border-radius: 10px;
+                                margin-bottom: 30px;
+                            }
+                            .info-card {
+                                border: 1px solid #e0e0e0;
+                                border-radius: 8px;
+                                padding: 15px;
+                                background-color: #f8f9fa;
+                                margin-bottom: 20px;
+                            }
+                            .info-row {
+                                display: flex;
+                                justify-content: space-between;
+                                padding: 8px 0;
+                                border-bottom: 1px solid #e0e0e0;
+                            }
+                            .info-row:last-child {
+                                border-bottom: none;
+                            }
+                            .criterion-table {
+                                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                            }
+                            .criterion-table thead {
+                                background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+                                color: white;
+                            }
+                            .criterion-table tbody tr:hover {
+                                background-color: #f1f3f5;
+                            }
+                            .score-badge {
+                                display: inline-block;
+                                padding: 5px 10px;
+                                border-radius: 20px;
+                                font-weight: bold;
+                            }
+                            .score-excellent { background-color: #28a745; color: white; }
+                            .score-good { background-color: #17a2b8; color: white; }
+                            .score-needs-improvement { background-color: #ffc107; color: #000; }
+                            .score-poor { background-color: #dc3545; color: white; }
+                        </style>
+
+                        <!-- Header -->
+                        <div class="header-box text-center">
+                            <h1 style="margin: 0; font-size: 32px;">Rubric Assessment Report</h1>
+                            <p style="margin: 5px 0 0 0; opacity: 0.9;">Academic Performance Evaluation</p>
+                        </div>
+
+                        <!-- Student Information Card -->
+                        <div class="info-card">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="info-row">
+                                        <span><strong>Date:</strong></span>
+                                        <span t-field="o.date"/>
+                                    </div>
+                                    <div class="info-row">
+                                        <span><strong>Student:</strong></span>
+                                        <span t-field="o.student_id"/>
+                                    </div>
+                                    <div class="info-row">
+                                        <span><strong>Course:</strong></span>
+                                        <span t-field="o.course_id"/>
+                                    </div>
+                                    <div class="info-row">
+                                        <span><strong>Rubric:</strong></span>
+                                        <span t-field="o.rubric_id"/>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="info-row">
+                                        <span><strong>Teacher:</strong></span>
+                                        <span t-field="o.teacher_id"/>
+                                    </div>
+                                    <div class="info-row">
+                                        <span><strong>Total Score:</strong></span>
+                                        <span style="font-size: 18px; font-weight: bold; color: #667eea;">
+                                            <span t-field="o.total_score"/> / 100
+                                        </span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span><strong>Performance:</strong></span>
+                                        <span t-field="o.performance_level"
+                                              class="score-badge score-good"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Criteria Table -->
+                        <div class="mt-4">
+                            <h3 style="color: #667eea; border-bottom: 3px solid #667eea; padding-bottom: 10px;">
+                                Assessment Criteria
+                            </h3>
+                            <table class="table table-bordered criterion-table mt-3">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 30%;">Criterion Name</th>
+                                        <th class="text-center" style="width: 12%;">Weight (%)</th>
+                                        <th class="text-center" style="width: 12%;">Score (1-4)</th>
+                                        <th class="text-center" style="width: 12%;">Weighted</th>
+                                        <th style="width: 34%;">Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-if="o.line_ids">
+                                        <tr t-foreach="o.line_ids" t-as="line">
+                                            <td><strong><span t-field="line.criterion_name"/></strong></td>
+                                            <td class="text-center"><span t-field="line.weight"/>%</td>
+                                            <td class="text-center">
+                                                <span t-field="line.score" class="score-badge"
+                                                      t-attf-class="score-badge #{
+                                                          'score-excellent' if line.score == 4 else
+                                                          'score-good' if line.score == 3 else
+                                                          'score-needs-improvement' if line.score == 2 else
+                                                          'score-poor'
+                                                      }"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <strong><span t-field="line.weighted_score"/></strong>
+                                            </td>
+                                            <td><span t-field="line.notes"/></td>
+                                        </tr>
+                                    </t>
+                                    <t t-else="">
+                                        <tr>
+                                            <td colspan="5" class="text-center text-muted py-4">
+                                                <em>No criteria have been added to this assessment</em>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+
+
+
+
+
+</odoo>
+
