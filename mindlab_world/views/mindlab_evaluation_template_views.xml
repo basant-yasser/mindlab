@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mindlab_evaluation_template_list" model="ir.ui.view">
+        <field name="name">mindlab.evaluation.template.list</field>
+        <field name="model">mindlab.evaluation.template</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="stage_id"/>
+                <field name="offer_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mindlab_evaluation_template_form" model="ir.ui.view">
+        <field name="name">mindlab.evaluation.template.form</field>
+        <field name="model">mindlab.evaluation.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="active"/>
+                        <field name="stage_id"/>
+                        <field name="offer_id"/>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="sequence"/>
+                            <field name="criterion_name"/>
+                            <field name="category"/>
+                            <field name="weight"/>
+                            <field name="max_score"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mindlab_evaluation_templates" model="ir.actions.act_window">
+        <field name="name">Evaluation Templates</field>
+        <field name="res_model">mindlab.evaluation.template</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

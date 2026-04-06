@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_mindlab_root" name="Mindlab World" sequence="10" groups="mindlab_world.group_mindlab_user,mindlab_world.group_mindlab_manager"/>
+
+    <menuitem id="menu_mindlab_students" name="Students" parent="menu_mindlab_root" action="action_mindlab_students" sequence="10"/>
+    <menuitem id="menu_mindlab_admissions" name="Admissions" parent="menu_mindlab_root" action="action_mindlab_admissions" sequence="20"/>
+    <menuitem id="menu_mindlab_programs" name="Programs" parent="menu_mindlab_root" action="action_mindlab_programs" sequence="30"/>
+    <menuitem id="menu_mindlab_courses" name="Courses" parent="menu_mindlab_root" action="action_mindlab_courses" sequence="40"/>
+    <menuitem id="menu_mindlab_enrollments" name="Enrollments" parent="menu_mindlab_root" action="action_mindlab_enrollments" sequence="50"/>
+    <menuitem id="menu_mindlab_evaluations" name="Evaluations" parent="menu_mindlab_root" action="action_mindlab_student_evaluations" sequence="60"/>
+    <menuitem id="menu_mindlab_attendance" name="Attendance" parent="menu_mindlab_root" action="action_mindlab_attendance" sequence="70"/>
+    <menuitem id="menu_mindlab_session_logs" name="Session Logs" parent="menu_mindlab_root" action="action_mindlab_session_logs" sequence="80"/>
+    <menuitem id="menu_mindlab_invoices" name="Invoices" parent="menu_mindlab_root" action="action_mindlab_invoices" sequence="90"/>
+
+    <menuitem id="menu_mindlab_configuration" name="Configuration" parent="menu_mindlab_root" sequence="200" groups="mindlab_world.group_mindlab_manager"/>
+    <menuitem id="menu_mindlab_stages" name="Stages" parent="menu_mindlab_configuration" action="action_mindlab_stages" sequence="10"/>
+    <menuitem id="menu_mindlab_categories" name="Categories" parent="menu_mindlab_configuration" action="action_mindlab_categories" sequence="20"/>
+    <menuitem id="menu_mindlab_eval_templates" name="Evaluation Templates" parent="menu_mindlab_configuration" action="action_mindlab_evaluation_templates" sequence="30"/>
+    <menuitem id="menu_mindlab_progression" name="Progression History" parent="menu_mindlab_configuration" action="action_mindlab_progressions" sequence="40"/>
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mindlab_attendance_batch_list" model="ir.ui.view">
+        <field name="name">mindlab.attendance.batch.list</field>
+        <field name="model">mindlab.attendance.batch</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="offer_id" string="Program"/>
+                <field name="teacher_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mindlab_attendance_batch_form" model="ir.ui.view">
+        <field name="name">mindlab.attendance.batch.form</field>
+        <field name="model">mindlab.attendance.batch</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="date"/>
+                            <field name="offer_id" string="Program"/>
+                            <field name="teacher_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group>
+                            <field name="notes" placeholder="Session notes"/>
+                        </group>
+                    </group>
+                    <group string="Students Attendance Lines" colspan="2">
+                        <button name="action_open_add_students_wizard" type="object" string="Add Students Wizard" class="btn-secondary"/>
+                        <field name="line_ids">
+                            <list editable="bottom">
+                                <field name="enrollment_id"/>
+                                <field name="student_id" readonly="1"/>
+                                <field name="current_stage_id" readonly="1" string="Current Stage"/>
+                                <field name="attendance_state"/>
+                                <field name="deduct_session"/>
+                                <field name="attendance_id" readonly="1" optional="hide"/>
+                            </list>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mindlab_attendance_batch_search" model="ir.ui.view">
+        <field name="name">mindlab.attendance.batch.search</field>
+        <field name="model">mindlab.attendance.batch</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="date"/>
+                <field name="offer_id" string="Program"/>
+                <field name="teacher_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_mindlab_attendance" model="ir.actions.act_window">
+        <field name="name">Attendance</field>
+        <field name="res_model">mindlab.attendance.batch</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

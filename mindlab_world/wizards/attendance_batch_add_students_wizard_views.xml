@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_attendance_batch_add_students_wizard_form" model="ir.ui.view">
+        <field name="name">mindlab.attendance.batch.add.students.wizard.form</field>
+        <field name="model">mindlab.attendance.batch.add.students.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Add Students to Attendance">
+                <group>
+                    <field name="batch_id"/>
+                    <field name="offer_id" string="Program"/>
+                    <field name="select_all"/>
+                    <field name="enrollment_ids" widget="many2many_tags" options="{'no_create': True}" invisible="select_all"/>
+                </group>
+                <footer>
+                    <button name="action_add_students" type="object" string="Add" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

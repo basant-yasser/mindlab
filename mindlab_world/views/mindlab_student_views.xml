@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mindlab_student_list" model="ir.ui.view">
+        <field name="name">mindlab.student.list</field>
+        <field name="model">mindlab.student</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="student_code"/>
+                <field name="name"/>
+                <field name="current_stage_id"/>
+                <field name="state"/>
+                <field name="mobile"/>
+                <field name="total_remaining_sessions"/>
+                <field name="latest_evaluation_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mindlab_student_form" model="ir.ui.view">
+        <field name="name">mindlab.student.form</field>
+        <field name="model">mindlab.student</field>
+        <field name="arch" type="xml">
+            <form string="Mindlab Student">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" name="action_view_admissions" icon="fa-file-text-o">
+                            <field name="admission_count" widget="statinfo" string="Admissions"/>
+                        </button>
+                        <button class="oe_stat_button" type="object" name="action_view_enrollments" icon="fa-book">
+                            <field name="enrollment_count" widget="statinfo" string="Enrollments"/>
+                        </button>
+                        <button class="oe_stat_button" type="object" name="action_view_evaluations" icon="fa-graduation-cap">
+                            <field name="evaluation_count" widget="statinfo" string="Evaluations"/>
+                        </button>
+                        <button class="oe_stat_button" type="object" name="action_view_attendance" icon="fa-check-square-o">
+                            <field name="attendance_count" widget="statinfo" string="Attendance"/>
+                        </button>
+                        <button class="oe_stat_button" type="object" name="action_view_invoices" icon="fa-money">
+                            <field name="invoice_count" widget="statinfo" string="Invoices"/>
+                        </button>
+                        <button class="oe_stat_button" type="object" name="action_view_progressions" icon="fa-line-chart">
+                            <field name="progression_count" widget="statinfo" string="Progression"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="image_1920" widget="image" class="oe_avatar"/>
+                            <field name="name"/>
+                            <field name="student_code" readonly="1"/>
+                            <field name="admission_id"/>
+                            <field name="state"/>
+                            <field name="current_stage_id"/>
+                            <field name="total_remaining_sessions" readonly="1"/>
+                            <field name="latest_evaluation_id" readonly="1"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="gender"/>
+                            <field name="birth_date"/>
+                            <field name="age" readonly="1"/>
+                            <field name="nationality"/>
+                            <field name="school_name"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="General Info">
+                            <group>
+                                <field name="partner_id"/>
+                                <field name="father_name"/>
+                                <field name="mother_name"/>
+                                <field name="guardian_name"/>
+                                <field name="mobile"/>
+                                <field name="email"/>
+                                <field name="address"/>
+                                <field name="emergency_contact"/>
+                            </group>
+                        </page>
+                        <page string="Admissions">
+                            <field name="admission_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="application_date"/>
+                                    <field name="state"/>
+                                    <field name="desired_offer_id"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Enrollments">
+                            <field name="enrollment_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="offer_id"/>
+                                    <field name="state"/>
+                                    <field name="teacher_id"/>
+                                    <field name="total_sessions"/>
+                                    <field name="remaining_sessions"/>
+                                    <field name="invoice_status"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Evaluations">
+                            <field name="evaluation_ids" readonly="1">
+                                <list>
+                                    <field name="evaluation_date"/>
+                                    <field name="offer_id"/>
+                                    <field name="teacher_id"/>
+                                    <field name="total_score"/>
+                                    <field name="performance_level"/>
+                                    <field name="progressed"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Attendance">
+                            <field name="attendance_ids" readonly="1">
+                                <list>
+                                    <field name="date"/>
+                                    <field name="offer_id"/>
+                                    <field name="attendance_state"/>
+                                    <field name="deduct_session"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Session Balance / Logs">
+                            <field name="session_log_ids" readonly="1">
+                                <list>
+                                    <field name="date"/>
+                                    <field name="enrollment_id"/>
+                                    <field name="action_type"/>
+                                    <field name="qty"/>
+                                    <field name="before_remaining"/>
+                                    <field name="after_remaining"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Progression History">
+                            <field name="progression_ids" readonly="1">
+                                <list>
+                                    <field name="date"/>
+                                    <field name="from_stage_id"/>
+                                    <field name="to_stage_id"/>
+                                    <field name="evaluation_id"/>
+                                    <field name="reason"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Invoices">
+                            <field name="invoice_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="invoice_date"/>
+                                    <field name="state"/>
+                                    <field name="payment_state"/>
+                                    <field name="amount_total"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <group>
+                                <field name="academic_notes"/>
+                                <field name="medical_notes"/>
+                                <field name="allergy_notes"/>
+                                <field name="notes"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mindlab_student_search" model="ir.ui.view">
+        <field name="name">mindlab.student.search</field>
+        <field name="model">mindlab.student</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_mindlab_students" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">mindlab.student</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="mindlab_stage_stage_1" model="mindlab.stage">
+        <field name="name">Stage 1</field>
+        <field name="code">STAGE1</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="mindlab_offer_robotics" model="mindlab.offer">
+        <field name="name">Robotics</field>
+        <field name="code">ROBOTICS</field>
+        <field name="offer_type">program</field>
+        <field name="stage_id" ref="mindlab_stage_stage_1"/>
+        <field name="fee">0.0</field>
+    </record>
+
+    <record id="mindlab_evaluation_template_evolution" model="mindlab.evaluation.template">
+        <field name="name">Evolution</field>
+        <field name="stage_id" ref="mindlab_stage_stage_1"/>
+        <field name="offer_id" ref="mindlab_offer_robotics"/>
+    </record>
+
+    <record id="mindlab_evaluation_template_line_1" model="mindlab.evaluation.template.line">
+        <field name="template_id" ref="mindlab_evaluation_template_evolution"/>
+        <field name="sequence">10</field>
+        <field name="criterion_name">Robotics Assembly</field>
+        <field name="weight">25</field>
+        <field name="level_1_description">Cannot identify parts or assemble model</field>
+        <field name="level_2_description">Identifies parts; needs step-by-step help</field>
+        <field name="level_3_description">Correct assembly using guide</field>
+        <field name="level_4_description">Correct, stable assembly independently</field>
+        <field name="max_score">4</field>
+    </record>
+
+    <record id="mindlab_evaluation_template_line_2" model="mindlab.evaluation.template.line">
+        <field name="template_id" ref="mindlab_evaluation_template_evolution"/>
+        <field name="sequence">20</field>
+        <field name="criterion_name">Coding &amp; Logic</field>
+        <field name="weight">25</field>
+        <field name="level_1_description">Cannot run or connect blocks</field>
+        <field name="level_2_description">Blocks used but logic incorrect</field>
+        <field name="level_3_description">Correct sequence; model works</field>
+        <field name="level_4_description">Adjusts values (speed, time) independently</field>
+        <field name="max_score">4</field>
+    </record>
+
+    <record id="mindlab_evaluation_template_line_3" model="mindlab.evaluation.template.line">
+        <field name="template_id" ref="mindlab_evaluation_template_evolution"/>
+        <field name="sequence">30</field>
+        <field name="criterion_name">Concept Understanding</field>
+        <field name="weight">20</field>
+        <field name="level_1_description">Cannot explain model</field>
+        <field name="level_2_description">Partial explanation</field>
+        <field name="level_3_description">Explains function correctly</field>
+        <field name="level_4_description">Explains + links to real-life example</field>
+        <field name="max_score">4</field>
+    </record>
+
+    <record id="mindlab_evaluation_template_line_4" model="mindlab.evaluation.template.line">
+        <field name="template_id" ref="mindlab_evaluation_template_evolution"/>
+        <field name="sequence">40</field>
+        <field name="criterion_name">Problem Solving</field>
+        <field name="weight">15</field>
+        <field name="level_1_description">Stops when model fails</field>
+        <field name="level_2_description">Fixes only when directed</field>
+        <field name="level_3_description">Tries one fix independently</field>
+        <field name="level_4_description">Tests and improves solution</field>
+        <field name="max_score">4</field>
+    </record>
+
+    <record id="mindlab_evaluation_template_line_5" model="mindlab.evaluation.template.line">
+        <field name="template_id" ref="mindlab_evaluation_template_evolution"/>
+        <field name="sequence">50</field>
+        <field name="criterion_name">Independence &amp; Behavior</field>
+        <field name="weight">15</field>
+        <field name="level_1_description">Constant support required</field>
+        <field name="level_2_description">Follows instructions with reminders</field>
+        <field name="level_3_description">Mostly independent</field>
+        <field name="level_4_description">Fully independent; supports peers</field>
+        <field name="max_score">4</field>
+    </record>
+</odoo>

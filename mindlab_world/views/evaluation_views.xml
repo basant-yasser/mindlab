@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mindlab_evaluation_template_list" model="ir.ui.view">
+        <field name="name">mindlab.evaluation.template.list</field>
+        <field name="model">mindlab.evaluation.template</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="stage_id"/>
+                <field name="offer_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mindlab_evaluation_template_form" model="ir.ui.view">
+        <field name="name">mindlab.evaluation.template.form</field>
+        <field name="model">mindlab.evaluation.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="active"/>
+                        <field name="stage_id"/>
+                        <field name="offer_id"/>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="sequence"/>
+                            <field name="criterion_name"/>
+                            <field name="category"/>
+                            <field name="weight"/>
+                            <field name="level_1_description"/>
+                            <field name="level_2_description"/>
+                            <field name="level_3_description"/>
+                            <field name="level_4_description"/>
+                            <field name="max_score"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mindlab_evaluation_templates" model="ir.actions.act_window">
+        <field name="name">Evaluation Templates</field>
+        <field name="res_model">mindlab.evaluation.template</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_mindlab_student_evaluation_list" model="ir.ui.view">
+        <field name="name">mindlab.student.evaluation.list</field>
+        <field name="model">mindlab.student.evaluation</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="evaluation_date"/>
+                <field name="student_id"/>
+                <field name="offer_id"/>
+                <field name="teacher_id"/>
+                <field name="total_score"/>
+                <field name="performance_level"/>
+                <field name="progressed"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mindlab_student_evaluation_form" model="ir.ui.view">
+        <field name="name">mindlab.student.evaluation.form</field>
+        <field name="model">mindlab.student.evaluation</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_mark_done" type="object" string="Mark Done" class="oe_highlight" invisible="state == 'done'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="student_id"/>
+                            <field name="enrollment_id"/>
+                            <field name="offer_id"/>
+                            <field name="evaluation_template_id"/>
+                        </group>
+                        <group>
+                            <field name="evaluation_date"/>
+                            <field name="teacher_id"/>
+                            <field name="total_score" readonly="1"/>
+                            <field name="performance_level" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Progression">
+                        <field name="stage_from_id"/>
+                        <field name="progressed"/>
+                        <field name="stage_to_id" invisible="not progressed"/>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom" create="0" delete="0">
+                            <field name="criterion_name" readonly="1"/>
+                            <field name="weight" readonly="1"/>
+                            <field name="score"/>
+                            <field name="weighted_score" readonly="1"/>
+                            <field name="notes"/>
+                            <field name="criterion_id" column_invisible="1"/>
+                        </list>
+                    </field>
+                    <group>
+                        <field name="recommendation"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mindlab_student_evaluation_search" model="ir.ui.view">
+        <field name="name">mindlab.student.evaluation.search</field>
+        <field name="model">mindlab.student.evaluation</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="performance_level"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_mindlab_student_evaluations" model="ir.actions.act_window">
+        <field name="name">Evaluations</field>
+        <field name="res_model">mindlab.student.evaluation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

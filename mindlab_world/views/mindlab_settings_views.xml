@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_mindlab_world" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.mindlab.world</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Mindlab World" name="mindlab_world" groups="mindlab_world.group_mindlab_manager">
+                    <block title="Enrollment and Billing">
+                        <setting string="Automatic Invoice on Enrollment">
+                            <field name="mindlab_auto_invoice_on_enrollment"/>
+                        </setting>
+                    </block>
+                    <block title="Attendance Deduction">
+                        <setting string="Default Deduction Policy">
+                            <field name="mindlab_default_attendance_deduction_mode"/>
+                        </setting>
+                        <setting string="Deduct on Present"><field name="mindlab_deduct_present"/></setting>
+                        <setting string="Deduct on Absent"><field name="mindlab_deduct_absent"/></setting>
+                        <setting string="Deduct on Excused"><field name="mindlab_deduct_excused"/></setting>
+                    </block>
+                    <block title="Session Alerts and Progression">
+                        <setting string="Warn Low Sessions"><field name="mindlab_warn_low_sessions"/></setting>
+                        <setting string="Low Session Threshold"><field name="mindlab_low_session_threshold"/></setting>
+                        <setting string="Enable Progression Tracking"><field name="mindlab_enable_progression_tracking"/></setting>
+                        <setting string="Evaluation Required Before Progression"><field name="mindlab_require_evaluation_for_progression"/></setting>
+                        <setting string="Enable Student Session Logs"><field name="mindlab_enable_student_session_logs"/></setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

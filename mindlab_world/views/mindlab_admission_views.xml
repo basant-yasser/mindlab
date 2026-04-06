@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mindlab_admission_list" model="ir.ui.view">
+        <field name="name">mindlab.admission.list</field>
+        <field name="model">mindlab.admission</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="application_date"/>
+                <field name="student_name"/>
+                <field name="student_id"/>
+                <field name="desired_offer_id"/>
+                <field name="desired_stage_id"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mindlab_admission_form" model="ir.ui.view">
+        <field name="name">mindlab.admission.form</field>
+        <field name="model">mindlab.admission</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_submit" type="object" string="Submit" invisible="state != 'draft'"/>
+                    <button name="action_review" type="object" string="Review" invisible="state not in ('submitted','draft')"/>
+                    <button name="action_approve" type="object" string="Approve" invisible="state not in ('submitted','under_review')"/>
+                    <button name="action_reject" type="object" string="Reject" invisible="state in ('rejected','enrolled')"/>
+                    <button name="action_create_student" type="object" string="Create Student" class="oe_highlight" invisible="student_id"/>
+                    <button name="action_mark_enrolled" type="object" string="Mark Enrolled" invisible="state != 'approved'"/>
+                    <button name="action_reset_draft" type="object" string="Reset Draft" invisible="state == 'draft'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,under_review,approved,rejected,enrolled"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="application_date"/>
+                            <field name="student_name"/>
+                            <field name="student_id" readonly="1"/>
+                            <field name="birth_date"/>
+                        </group>
+                        <group>
+                            <field name="parent_id"/>
+                            <field name="guardian_name"/>
+                            <field name="mobile"/>
+                            <field name="email"/>
+                            <field name="address"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="desired_offer_id"/>
+                        <field name="desired_stage_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                        <page string="Enrollments">
+                            <field name="enrollment_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="student_id"/>
+                                    <field name="offer_id"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mindlab_admission_search" model="ir.ui.view">
+        <field name="name">mindlab.admission.search</field>
+        <field name="model">mindlab.admission</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_mindlab_admissions" model="ir.actions.act_window">
+        <field name="name">Admissions</field>
+        <field name="res_model">mindlab.admission</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

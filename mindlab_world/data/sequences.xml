@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_mindlab_student" model="ir.sequence">
+        <field name="name">Mindlab Student</field>
+        <field name="code">mindlab.student</field>
+        <field name="prefix">STU/%(year)s/</field>
+        <field name="padding">4</field>
+    </record>
+
+    <record id="seq_mindlab_admission" model="ir.sequence">
+        <field name="name">Mindlab Admission</field>
+        <field name="code">mindlab.admission</field>
+        <field name="prefix">ADM/%(year)s/</field>
+        <field name="padding">4</field>
+    </record>
+
+    <record id="seq_mindlab_enrollment" model="ir.sequence">
+        <field name="name">Mindlab Enrollment</field>
+        <field name="code">mindlab.enrollment</field>
+        <field name="prefix">ENR/%(year)s/</field>
+        <field name="padding">4</field>
+    </record>
+
+    <record id="seq_mindlab_student_evaluation" model="ir.sequence">
+        <field name="name">Mindlab Student Evaluation</field>
+        <field name="code">mindlab.student.evaluation</field>
+        <field name="prefix">EVA/%(year)s/</field>
+        <field name="padding">4</field>
+    </record>
+
+    <record id="seq_mindlab_attendance_batch" model="ir.sequence">
+        <field name="name">Mindlab Attendance Batch</field>
+        <field name="code">mindlab.attendance.batch</field>
+        <field name="prefix">ATB/%(year)s/</field>
+        <field name="padding">4</field>
+    </record>
+</odoo>

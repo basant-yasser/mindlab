@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mindlab_offer_list" model="ir.ui.view">
+        <field name="name">mindlab.offer.list</field>
+        <field name="model">mindlab.offer</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="offer_type"/>
+                <field name="stage_id"/>
+                <field name="teacher_id"/>
+                <field name="has_session_limit"/>
+                <field name="total_sessions"/>
+                <field name="fee"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mindlab_offer_form" model="ir.ui.view">
+        <field name="name">mindlab.offer.form</field>
+        <field name="model">mindlab.offer</field>
+        <field name="arch" type="xml">
+            <form string="Educational Offer">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="offer_type"/>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="category_id"/>
+                            <field name="stage_id"/>
+                            <field name="parent_program_id" invisible="offer_type != 'course'"/>
+                        </group>
+                        <group>
+                            <field name="teacher_id"/>
+                            <field name="duration_value"/>
+                            <field name="duration_unit"/>
+                            <field name="has_session_limit"/>
+                            <field name="total_sessions" invisible="not has_session_limit"/>
+                            <field name="fee"/>
+                            <field name="product_id"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                        <page string="Evaluations">
+                            <group>
+                                <field name="allow_evaluation"/>
+                                <field name="evaluation_template_id"/>
+                            </group>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mindlab_offer_search" model="ir.ui.view">
+        <field name="name">mindlab.offer.search</field>
+        <field name="model">mindlab.offer</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_mindlab_programs" model="ir.actions.act_window">
+        <field name="name">Programs</field>
+        <field name="res_model">mindlab.offer</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('offer_type','=','program')]</field>
+        <field name="context">{'default_offer_type':'program'}</field>
+    </record>
+
+    <record id="action_mindlab_courses" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">mindlab.offer</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('offer_type','=','course')]</field>
+        <field name="context">{'default_offer_type':'course'}</field>
+    </record>
+</odoo>

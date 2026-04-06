@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mindlab_enrollment_list" model="ir.ui.view">
+        <field name="name">mindlab.enrollment.list</field>
+        <field name="model">mindlab.enrollment</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="student_id"/>
+                <field name="offer_id"/>
+                <field name="teacher_id"/>
+                <field name="start_date"/>
+                <field name="state"/>
+                <field name="invoice_status"/>
+                <field name="total_sessions"/>
+                <field name="used_sessions"/>
+                <field name="remaining_sessions"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mindlab_enrollment_form" model="ir.ui.view">
+        <field name="name">mindlab.enrollment.form</field>
+        <field name="model">mindlab.enrollment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_activate" type="object" string="Activate" invisible="state != 'draft'" class="oe_highlight"/>
+                    <button name="action_complete" type="object" string="Complete" invisible="state != 'active'"/>
+                    <button name="action_suspend" type="object" string="Suspend" invisible="state != 'active'"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('cancelled','completed')"/>
+                    <button name="action_reset_draft" type="object" string="Reset Draft" invisible="state == 'draft'"/>
+                    <button name="action_generate_invoice" type="object" string="Generate Invoice" invisible="invoice_id"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,active,completed,suspended,cancelled"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="student_id"/>
+                            <field name="admission_id"/>
+                            <field name="offer_id"/>
+                            <field name="offer_type" readonly="1"/>
+                            <field name="teacher_id"/>
+                        </group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="fee"/>
+                            <field name="invoice_id" readonly="1"/>
+                            <field name="invoice_status" readonly="1"/>
+                            <field name="attendance_policy"/>
+                        </group>
+                    </group>
+                    <group string="Session Balance">
+                        <field name="total_sessions" readonly="1"/>
+                        <field name="used_sessions" readonly="1"/>
+                        <field name="remaining_sessions" readonly="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Attendance">
+                            <field name="attendance_ids">
+                                <list>
+                                    <field name="date"/>
+                                    <field name="attendance_state"/>
+                                    <field name="deduct_session"/>
+                                    <field name="teacher_id"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Session Logs">
+                            <field name="session_log_ids" readonly="1">
+                                <list>
+                                    <field name="date"/>
+                                    <field name="action_type"/>
+                                    <field name="qty"/>
+                                    <field name="before_remaining"/>
+                                    <field name="after_remaining"/>
+                                    <field name="reason"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mindlab_enrollment_search" model="ir.ui.view">
+        <field name="name">mindlab.enrollment.search</field>
+        <field name="model">mindlab.enrollment</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_mindlab_enrollments" model="ir.actions.act_window">
+        <field name="name">Enrollments</field>
+        <field name="res_model">mindlab.enrollment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="module_category_mindlab_world" model="ir.module.category">
+        <field name="name">Mindlab World</field>
+        <field name="description">Mindlab World access groups</field>
+        <field name="sequence">30</field>
+    </record>
+
+    <record id="group_mindlab_user" model="res.groups">
+        <field name="name">Mindlab World User</field>
+    </record>
+
+    <record id="group_mindlab_manager" model="res.groups">
+        <field name="name">Mindlab World Manager</field>
+        <field name="implied_ids" eval="[(4, ref('mindlab_world.group_mindlab_user'))]"/>
+    </record>
+</odoo>
